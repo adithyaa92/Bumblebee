@@ -7,6 +7,11 @@ namespace Bumblebee.Setup.DriverEnvironments
 	{
 		public Chrome()
 		{
+			DesiredCapabilities capability;
+			ChromeOptions chromeOptions = new ChromeOptions();
+			chromeOptions.AddArgument("--disable-plugins");
+			chromeOptions.AddAdditionalCapability("excludeSwitches", "disable-popup-blocking");
+			capability = (DesiredCapabilities)chromeOptions.ToCapabilities();
 		}
 
 		public Chrome(TimeSpan timeToWait) : base(timeToWait)
